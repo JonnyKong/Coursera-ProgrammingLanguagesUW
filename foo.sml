@@ -1,2 +1,2 @@
-val x = 3 + 4
-val y = x * 5
+val x = 34;
+val y = 17;
