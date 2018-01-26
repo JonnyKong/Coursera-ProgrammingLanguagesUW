@@ -17,4 +17,4 @@ val test5 = f(12,27) = 324
 (* You can add more tests here, for example you can uncomment the line below
 by deleting the first two character and last two characters on the line *)
 
-(* val test6 = triple ~1 = ~3 *)
+val test6 = triple ~1 = ~3
