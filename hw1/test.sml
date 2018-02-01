@@ -63,3 +63,4 @@ val test133 = reasonable_date((0,1,1)) = false
 val test134 = reasonable_date((2017,2,29)) = false
 val test135 = reasonable_date((2017,2,28)) = true
 val test136 = reasonable_date((2016,2,29)) = true
+val test136 = reasonable_date((0,2,29)) = false
