@@ -10,8 +10,8 @@ fun is_older(x: int*int*int, y: int*int*int) =
         else #3 x < #3 y
 
 
-(* 2.   Takes a list of dates and a list of months, and returns how many dates
-        in the list are in the given month *)
+(* 2.   Takes a list of dates and a month, and returns how many dates in the 
+        list are in the given month *)
 fun number_in_month(dates: (int*int*int) list, month: int) =
     if null(dates)
     then 0

@@ -51,10 +51,10 @@ val test120 = number_in_months_challenge ([(2012,2,28),(2013,12,1),(2011,3,31),
                                 (2011,4,28)], [2,3,4]) = 3
 val test121 = number_in_months_challenge ([(2012,2,28),(2013,12,1),(2011,3,31),
                                 (2011,4,28)], [2,3,4,3,2,3,4,3]) = 3
-val test122 = dates_in_months_challenge ([(2012,2,28),(2013,12,1),(2011,3,31),
+(* val test122 = dates_in_months_challenge ([(2012,2,28),(2013,12,1),(2011,3,31),
                 (2011,4,28)], [2,3,4]) = [(2012,2,28),(2011,3,31),(2011,4,28)]
 val test123 = dates_in_months_challenge ([(2012,2,28),(2013,12,1),(2011,3,31),
-                (2011,4,28)], [2,3,4,3,2]) = [(2012,2,28),(2011,3,31),(2011,4,28)]
+                (2011,4,28)], [2,3,4,3,2]) = [(2012,2,28),(2011,3,31),(2011,4,28)] *)
 
 val test130 = reasonable_date((2017,12,31)) = true
 val test131 = reasonable_date((2017,1,1)) = true
@@ -63,4 +63,5 @@ val test133 = reasonable_date((0,1,1)) = false
 val test134 = reasonable_date((2017,2,29)) = false
 val test135 = reasonable_date((2017,2,28)) = true
 val test136 = reasonable_date((2016,2,29)) = true
-val test136 = reasonable_date((0,2,29)) = false
+val test137 = reasonable_date((0,2,29)) = false
+val test138 = reasonable_date((1600,2,29)) = false
