@@ -26,8 +26,12 @@ fun max1 (xs : int list) =
 	   else SOME (hd xs)
 	end
 
+
+
 (* looks the same as max1 to clients; 
    implementation avoids valOf *)
+(* Defines function that handles int, but not int option.
+   First do sanity check before further action. *)
 fun max2 (xs : int list) =
     if null xs
     then NONE
@@ -42,5 +46,5 @@ fun max2 (xs : int list) =
 			 else tl_ans
 		     end
 	in
-	    SOME (max_nonempty xs)
+	    SOME (max_nonempty xs)	(* Has to return an int option *)
 	end
