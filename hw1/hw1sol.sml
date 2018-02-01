@@ -168,7 +168,9 @@ fun dates_in_months_challenge(dates: (int*int*int) list, months: int list) =
         dates_in_months(dates, months_unique)
     end
 
-
+(* 13.  Function behave like problem 5, except having a month in the
+        second argument multiple times have no more effect than having it
+        once *)
 fun reasonable_date(date: int*int*int) =
     let
         fun is_leap_year(year: int) =
