@@ -16,13 +16,14 @@ fun full_name2 (r : {first:string,middle:string,last:string}) =
 	x ^ " " ^ y ^ " " ^z
     end
 
-fun sum_triple2 triple =
+fun sum_triple2(triple)=
     let val (x,y,z) = triple 
     in 
         x + y + z 
     end
+    (* #1 triple + #2 triple + #3 triple *)
 
-fun full_name3 {first=x,middle=y,last=z} =
+fun full_name3({first=x,middle=y,last=z}) =
     x ^ " " ^ y ^ " " ^z
 
 fun sum_triple3 (x,y,z) =
@@ -31,3 +32,6 @@ fun sum_triple3 (x,y,z) =
 fun rotate_left (x,y,z) = (y,z,x)
 
 fun rotate_right triple = rotate_left(rotate_left triple)
+
+val x = (1, 2, 3)
+val y = sum_triple2(x)
