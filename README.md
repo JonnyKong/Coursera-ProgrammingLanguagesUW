@@ -2,10 +2,20 @@
 This is the course project for MOOC programming languages part A, offered by University of Washington
 
 ## The homework of this course contains:  
-1. hw1: SML functions:
-    * Functions
+1. hw1:
+    * SML Functions
     * Pairs, tuples and lists
     * Let expressions
     * Local variables, nested functions
     * Options
     * Boolean and comparison operators
+
+2. hw2: 
+    * Compound types: records and tuples
+    * Concept of "Syntatic Sugar"
+    * Datatype bindings and case expressions
+    * __Pattern Matching__
+    * Type synonyms
+    * Polymorphic datatypes
+    * Nested patterns
+    * Tail recursions
