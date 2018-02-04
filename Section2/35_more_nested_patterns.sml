@@ -5,7 +5,8 @@
 fun nondecreasing xs =
     case xs of
 	[] => true
-      | x::[] => true
+      (* | x::[] => true *)
+      | _::[] => true
       | head::(neck::rest) => (head <= neck andalso nondecreasing (neck::rest))
 
 (* nested pattern-matching often convenient even without recursion;
@@ -22,7 +23,8 @@ fun multsign (x1,x2) =
 	| (_,Z) => Z
 	| (P,P) => P
 	| (N,N) => P
-	| _     => N (* many say bad style; I am okay with it *)
+	| _     => N 
+  (* many say bad style; I am okay with it *)
   end
 
 (* simpler use of wildcard pattern for when you do not need the data *)
