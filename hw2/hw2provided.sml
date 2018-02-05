@@ -88,27 +88,21 @@ fun similar_names(strss, name) =
 
 (* ----- Solutions | Solitaire Card Game ----- *)
 (* Problem 5 *)
-fun card_color(card) =
-    let
-        val (suit, _) = card
-    in
-        case suit of
-        Spades => Black
-        | Clubs => Black
-        | Diamonds => Red
-        | Hearts => Red
-    end
+fun card_color(suit, _) =
+    case suit of
+    Spades => Black
+    | Clubs => Black
+    | Diamonds => Red
+    | Hearts => Red
+
 
 (* Problem 6 *)
-fun card_value(card) =
-    let
-        val (_, rank) = card
-    in
-        case rank of
-        Num n => n
-        | Ace => 11
-        | _ => 10
-    end
+fun card_value(_, rank) =
+    case rank of
+    Num n => n
+    | Ace => 11
+    | _ => 10
+
 
 (* Problem 7 *)
 fun remove_card(cs, c, e) =
