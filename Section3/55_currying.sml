@@ -41,4 +41,3 @@ fun fold f acc xs = (* means fun fold f = fn acc => fn xs => *)
 
 (* a call to curried fold: will improve this call next *)
 fun sum xs = fold (fn (x,y) => x+y) 0 xs
-
