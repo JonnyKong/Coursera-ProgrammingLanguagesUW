@@ -93,7 +93,32 @@ fun all_answers f xs =
 			| _ => NONE
 	end
 
+
 (* Problem 9 *)
+val count_wildcards = g (fn () => 1) (fn x => 0)
+
+val count_wild_and_variable_lengths = g (fn () => 1) String.size
+
+fun count_some_var(str, p) = g (fn() => 0) (fn x => if x = str then 1 else 0) p
+
+
+(* Problem 10 *)
+fun check_pat pat =
+	let
+		fun expand_variable pat accu =
+			case pat of
+				Wildcard => accu
+				| Variable s => s::accu
+				| TupleP ps => List.foldl (fn (p, accu) => expand_variable p accu)
+				| ConstructorP(_, p) => expand_variable p accu
+				| _ => accu
+		fun has_repeat strs =
+			case ss of
+				[] => false
+				| s::ss => (List.exists (fn x => x = s)) ss orelse has_repeat ss
+	in
+
+	end
 
 
 
@@ -151,3 +176,20 @@ val test83 = all_answers (fn x => if x > 0 then SOME [x] else NONE) [2,3,4,5,6,7
 	= SOME([2,3,4,5,6,7])
 val test84 = all_answers (fn x => if x mod 2 = 0 then SOME [x] else NONE) [2,4,6]
 	= SOME([2,4,6])
+
+val test9a0 = count_wildcards Wildcard = 1
+val test9a1 = count_wildcards (TupleP [Wildcard,Wildcard]) = 2
+val test9a2 = count_wildcards (TupleP [Wildcard,(Variable "test")]) = 1
+val test9a3 = count_wildcards (TupleP [Wildcard,ConstructorP("c", Wildcard)]) = 2
+val test9a4 = count_wildcards (TupleP [UnitP,ConstructorP("c", Wildcard)]) = 1
+val test9a5 = count_wildcards (TupleP [ConstP 7,ConstructorP("c", Wildcard)]) = 1
+
+val test9b0 = count_wild_and_variable_lengths (Variable("a")) = 1
+val test9b1 = count_wild_and_variable_lengths (Variable("ab")) = 2
+val test9b2 = count_wild_and_variable_lengths (TupleP [Variable("ab"),Wildcard]) = 3
+
+val test9c0 = count_some_var ("x", Variable("x")) = 1
+val test9c1 = count_some_var ("x", TupleP [Variable("x")]) = 1
+val test9c2 = count_some_var ("x", TupleP [Variable("x"),Variable("x")]) = 2
+val test9c3 = count_some_var ("x", TupleP [Variable("x"),ConstructorP("a",
+	Variable("x"))]) = 2
