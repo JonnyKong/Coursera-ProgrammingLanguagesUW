@@ -26,4 +26,4 @@ This is the course project for MOOC programming languages part A, offered by Uni
     * __Currying__
     * Mutable references
     * Callbacks
-    * Use callbacks in OOP (Java) and procedual languages (C)
+    * Use closures in OOP (Java) and procedual languages (C)
