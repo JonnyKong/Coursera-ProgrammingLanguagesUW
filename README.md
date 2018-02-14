@@ -1,8 +1,8 @@
 # Coursera: Programming Languages, UW, PartA
 This is the course project for MOOC programming languages part A, offered by University of Washington
 
-## The homework of this course contains:  
-1. hw1:
+## The content of this course contains:  
+1. Section 1:
     * SML Functions
     * Pairs, tuples and lists
     * Let expressions
@@ -10,7 +10,7 @@ This is the course project for MOOC programming languages part A, offered by Uni
     * Options
     * Boolean and comparison operators
 
-2. hw2: 
+2. Section 2: 
     * Compound types: records and tuples
     * Concept of "Syntatic Sugar"
     * Datatype bindings and case expressions
@@ -20,7 +20,7 @@ This is the course project for MOOC programming languages part A, offered by Uni
     * Nested patterns
     * Tail recursions
 
-3. hw3:
+3. Section 3:
     * Anonymous functions
     * Lexical scope and __closures__
     * __Currying__
