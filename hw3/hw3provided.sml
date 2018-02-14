@@ -76,7 +76,7 @@ val rev_string = String.implode o List.rev o String.explode
 fun first_answer f xs =
 	case ((List.filter isSome) o (List.map f)) xs of
 		[] => raise NoAnswer
-		| x::xs => valOf(x)
+		| (SOME x)::xs => x
 
 
 (* Problem 8 *)
