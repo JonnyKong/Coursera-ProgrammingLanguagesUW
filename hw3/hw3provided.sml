@@ -105,91 +105,39 @@ fun count_some_var(str, p) = g (fn() => 0) (fn x => if x = str then 1 else 0) p
 (* Problem 10 *)
 fun check_pat pat =
 	let
-		fun expand_variable pat accu =
+		fun expand_variable(pat, accu) =
 			case pat of
 				Wildcard => accu
 				| Variable s => s::accu
-				| TupleP ps => List.foldl (fn (p, accu) => expand_variable p accu)
-				| ConstructorP(_, p) => expand_variable p accu
+				| TupleP ps => List.foldl expand_variable accu ps
+				| ConstructorP(_, pat) => expand_variable(pat, accu)
 				| _ => accu
-		fun has_repeat strs =
+		fun has_repeat ss =
 			case ss of
 				[] => false
 				| s::ss => (List.exists (fn x => x = s)) ss orelse has_repeat ss
 	in
-
+		not (has_repeat (expand_variable(pat, [])))
 	end
 
 
+(* Problem 11 *)
+fun match(v, p) =
+	case (p, v) of
+		(Wildcard, _) => SOME []
+		| (Variable s, v) => SOME [(s, v)]
+		| (UnitP, Unit) => SOME []
+		| (ConstP(p), Const(v)) => if p = v then (SOME []) else NONE
+		| (TupleP(ps), Tuple(vs)) => if List.length(ps) <> List.length(vs) then NONE
+			else all_answers match (ListPair.zipEq(vs, ps))  
+		| (ConstructorP(s1, p), Constructor(s2, v)) => 
+			if s1 = s2 then match(v, p) else NONE
+		| _ => NONE
 
 
-
-(* ----- Test Cases ----- *)
-val test10 = only_capitals ["A","B","C"] = ["A","B","C"]
-val test11 = only_capitals ["A","B","C","d"] = ["A","B","C"]
-val test12 = only_capitals ["A","C","d","B"] = ["A","C","B"]
-
-val test20 = longest_string1 ["A","bc","C"] = "bc"
-val test21 = longest_string1 ["A","bc","CBZ"] = "CBZ"
-val test22 = longest_string1 [] = ""
-val test23 = longest_string1 ["AB","bcd","CBZ"] = "bcd"
-
-val test30 = longest_string2 ["A","bc","C"] = "bc"
-val test31 = longest_string2 ["A","bc","CBZ"] = "CBZ"
-val test32 = longest_string2 [] = ""
-val test33 = longest_string2 ["AB","bcd","CBZ"] = "CBZ"
-
-val test4a0 = longest_string3 ["A","bc","C"] = "bc"
-val test4a1 = longest_string3 ["A","bc","CBZ"] = "CBZ"
-val test4a2 = longest_string3 [] = ""
-val test4a3 = longest_string3 ["AB","bcd","CBZ"] = "bcd"
-
-val test4b0 = longest_string4 ["A","B","C"] = "C"
-val test4b1 = longest_string4 ["A","bc","C"] = "bc"
-val test4b2 = longest_string4 ["A","bc","CBZ"] = "CBZ"
-val test4b3 = longest_string4 [] = ""
-val test4b4 = longest_string4 ["AB","bcd","CBZ"] = "CBZ"
-
-val test50 = longest_capitalized ["A","bc","C"] = "A"
-val test51 = longest_capitalized [] = ""
-val test52 = longest_capitalized ["AB","bc","C"] = "AB"
-val test53 = longest_capitalized ["AB","bc","CB"] = "AB"
-val test54 = longest_capitalized ["AB","bc","CBA"] = "CBA"
-
-val test60 = rev_string "abc" = "cba"
-val test61 = rev_string "" = ""
-val test62 = rev_string "abcdef" = "fedcba"
-
-val test70 = first_answer (fn x => if x > 3 then SOME x else NONE) [1,2,3,4,5] = 4
-val test71 = first_answer (fn x => if x > 2 then SOME x else NONE) [1,2,3,4,5] = 3
-val test72 = first_answer (fn x => if x < 2 then SOME x else NONE) [1,2,3,4,5] = 1
-val test73 = ((first_answer (fn x => if x > 6 then SOME x else NONE) [1,2,3,4,5] = 1;
-			false) handle NoAnswer => true)
-
-val test80 = all_answers (fn x => if x = 1 then SOME [x] else NONE) [2,3,4,5,6,7]
-	= NONE
-val test81 = all_answers (fn x => if x = 2 then SOME [x] else NONE) [2,3,4,5,6,7]
-	= NONE
-val test82 = all_answers (fn x => if x mod 2 = 0 then SOME [x] else NONE) [2,3,4,5,6,7]
-	= NONE
-val test83 = all_answers (fn x => if x > 0 then SOME [x] else NONE) [2,3,4,5,6,7]
-	= SOME([2,3,4,5,6,7])
-val test84 = all_answers (fn x => if x mod 2 = 0 then SOME [x] else NONE) [2,4,6]
-	= SOME([2,4,6])
-
-val test9a0 = count_wildcards Wildcard = 1
-val test9a1 = count_wildcards (TupleP [Wildcard,Wildcard]) = 2
-val test9a2 = count_wildcards (TupleP [Wildcard,(Variable "test")]) = 1
-val test9a3 = count_wildcards (TupleP [Wildcard,ConstructorP("c", Wildcard)]) = 2
-val test9a4 = count_wildcards (TupleP [UnitP,ConstructorP("c", Wildcard)]) = 1
-val test9a5 = count_wildcards (TupleP [ConstP 7,ConstructorP("c", Wildcard)]) = 1
-
-val test9b0 = count_wild_and_variable_lengths (Variable("a")) = 1
-val test9b1 = count_wild_and_variable_lengths (Variable("ab")) = 2
-val test9b2 = count_wild_and_variable_lengths (TupleP [Variable("ab"),Wildcard]) = 3
-
-val test9c0 = count_some_var ("x", Variable("x")) = 1
-val test9c1 = count_some_var ("x", TupleP [Variable("x")]) = 1
-val test9c2 = count_some_var ("x", TupleP [Variable("x"),Variable("x")]) = 2
-val test9c3 = count_some_var ("x", TupleP [Variable("x"),ConstructorP("a",
-	Variable("x"))]) = 2
+(* Problem 12 *)
+fun first_match v ps =
+	let 
+		fun match_value p = match(v, p)
+		val ans = SOME (first_answer match_value ps) handle NoAnswer => NONE 
+	in ans end
