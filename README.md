@@ -19,3 +19,11 @@ This is the course project for MOOC programming languages part A, offered by Uni
     * Polymorphic datatypes
     * Nested patterns
     * Tail recursions
+
+3. hw3:
+    * Anonymous functions
+    * Lexical scope and __closures__
+    * __Currying__
+    * Mutable references
+    * Callbacks
+    * Use callbacks in OOP (Java) and procedual languages (C)
