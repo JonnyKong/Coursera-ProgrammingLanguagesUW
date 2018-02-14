@@ -1,5 +1,5 @@
 # Coursera: Programming Languages, UW, PartA
-This is the course project for MOOC programming languages part A, offered by University of Washington
+This is the course project for MOOC Programming Languages (Part A), offered by University of Washington
 
 ## The content of this course contains:  
 1. Section 1:
