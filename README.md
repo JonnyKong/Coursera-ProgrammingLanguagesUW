@@ -1,8 +1,8 @@
-# Coursera: Programming Languages, UW, PartA
-This is the course project for MOOC Programming Languages (Part A), offered by University of Washington
+# Coursera: Programming Languages, UW
+This is the course project for MOOC Programming Languages, offered by University of Washington
 
 ## The content of this course contains:  
-1. Section 1:
+1. Section 1 (Standard ML):
     * SML Functions
     * Pairs, tuples and lists
     * Let expressions
@@ -10,7 +10,7 @@ This is the course project for MOOC Programming Languages (Part A), offered by U
     * Options
     * Boolean and comparison operators
 
-2. Section 2: 
+2. Section 2 (Standard ML): 
     * Compound types: records and tuples
     * Concept of "Syntatic Sugar"
     * Datatype bindings and case expressions
@@ -20,10 +20,18 @@ This is the course project for MOOC Programming Languages (Part A), offered by U
     * Nested patterns
     * Tail recursions
 
-3. Section 3:
+3. Section 3 (Standard ML):
     * Anonymous functions
     * Lexical scope and __closures__
     * __Currying__
     * Mutable references
     * Callbacks
     * Use closures in OOP (Java) and procedual languages (C)
+
+4. Section 4 (Standard ML):
+    * __Type inferencing__
+    * Mutual recursion
+    * SML module systems
+    * Signatures
+    * __Implementing ADTs with signatures and modules__
+    * Equivalent functions
