@@ -1,4 +1,6 @@
 .DS_Store
 sml.json
 .vscode/
-foo.sml
+foo.*
+test.*
+#*
