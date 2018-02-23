@@ -72,9 +72,17 @@
 
 
 ;; Problem 10
-
-
-
-(define powers-of-two
-  (letrec ([f (lambda (x) (cons x (lambda () (f (* x 2)))))])
-    (lambda () (f 2))))
+(define (cached-assoc xs n)
+  (letrec ([pos 0]
+          [cache (vector n #f)])
+    (lambda (v) 
+      (letrec ([search_cache (vector-assoc v cache)])
+        (if search_cache search_cache ; in cache
+          (letrec ([search_list (assoc v xs)])  ; otherwise
+            (if search_list 
+              (begin  ; not in cache but in list
+                (vector-set! cache pos search_list)
+                (set! pos (remainder (+ pos 1) n))
+                (print "soft miss")
+                search_list)  
+              #f)))))))  ; not in list
