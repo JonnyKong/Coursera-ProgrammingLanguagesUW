@@ -83,6 +83,5 @@
               (begin  ; not in cache but in list
                 (vector-set! cache pos search_list)
                 (set! pos (remainder (+ pos 1) n))
-                (print "soft miss")
                 search_list)  
               #f)))))))  ; not in list

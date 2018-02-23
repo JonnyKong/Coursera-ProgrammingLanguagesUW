@@ -35,3 +35,13 @@ This is the course project for MOOC Programming Languages, offered by University
     * Signatures
     * __Implementing ADTs with signatures and modules__
     * Equivalent functions
+
+5. Section 5 (Racket):
+    * Racket definitions, functions and conditionals
+    * Racket lists
+    * __Dynamic typing__
+    * Local and top-level bindings
+    * Mutation
+    * __Delayed evaluation and thunks__ 
+    * Streams use and definition
+    * Memoization
