@@ -5,5 +5,4 @@ foo.*
 test.*
 #*
 *.rkt~
-*.dep
 */compiled/
