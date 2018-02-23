@@ -48,10 +48,30 @@
 
 ;; Problem 7
 (define (stream-add-zero s)
+  (lambda () (cons (cons 0 (car (s))) (lambda () ((stream-add-zero (cdr (s))))))))
 
 
+;; Problem 8
+(define (cycle-lists xs ys)
+  (letrec ([f (lambda (n) 
+            (cons (cons (list-nth-mod xs n) (list-nth-mod ys n))
+                (lambda () (f (+ n 1)))))])
+    (lambda () (f 0))))
 
 
+;; Problem 9
+(define (vector-assoc v vec)
+  (letrec ([f (lambda (n) 
+            (cond [(= n (vector-length vec)) #f]
+                  [(pair? (vector-ref vec n)) 
+                    (if (equal? v (car (vector-ref vec n)))
+                      (vector-ref vec n)
+                      (f (+ n 1)))]
+                  [#t (f (+ n 1))]))])
+    (f 0)))
+
+
+;; Problem 10
 
 
 

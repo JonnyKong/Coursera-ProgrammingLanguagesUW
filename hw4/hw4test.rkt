@@ -31,6 +31,7 @@
    
    ; list-nth-mod test
    (check-equal? (list-nth-mod (list 0 1 2 3 4) 2) 2 "list-nth-mod test")
+   (check-equal? (list-nth-mod (list 0 1 2 3 4) 0) 0 "list-nth-mod test")
    (check-equal? (list-nth-mod (list 0 1 2 3 4) 7) 2 "list-nth-mod test")
    (check-equal? (list-nth-mod (list 0 1 2 3 4) 8) 3 "list-nth-mod test")
    
@@ -49,14 +50,21 @@
    (check-equal? (stream-for-n-steps dan-then-dog 3) (list "dan.jpg" "dog.jpg" "dan.jpg") "dan-then-dog test")
    
    ; stream-add-zero test
-   ;; (check-equal? (stream-for-n-steps (stream-add-zero ones) 1) (list (cons 0 1)) "stream-add-zero test")
+   (check-equal? (stream-for-n-steps (stream-add-zero ones) 1) (list (cons 0 1)) "stream-add-zero test")
+   (check-equal? (stream-for-n-steps (stream-add-zero ones) 2) (list (cons 0 1) (cons 0 1)) "stream-add-zero test")
+   (check-equal? (stream-for-n-steps (stream-add-zero powers-of-two) 2) (list (cons 0 2) (cons 0 4)) "stream-add-zero test")
    
    ; cycle-lists test
-   ;; (check-equal? (stream-for-n-steps (cycle-lists (list 1 2 3) (list "a" "b")) 3) (list (cons 1 "a") (cons 2 "b") (cons 3 "a")) 
-   ;;              "cycle-lists test")
+   (check-equal? (stream-for-n-steps (cycle-lists (list 1 2 3) (list "a" "b")) 3) (list (cons 1 "a") (cons 2 "b") (cons 3 "a")) 
+                "cycle-lists test")
+   (check-equal? (stream-for-n-steps (cycle-lists (list 1 2 3) (list "a" "b")) 2) (list (cons 1 "a") (cons 2 "b")) 
+                "cycle-lists test")
+   (check-equal? (stream-for-n-steps (cycle-lists (list 1 2 3) (list "a" "b")) 4) (list (cons 1 "a") (cons 2 "b") (cons 3 "a") (cons 1 "b")) 
+                "cycle-lists test")
    
    ; vector-assoc test
-   ;; (check-equal? (vector-assoc 4 (vector (cons 2 1) (cons 3 1) (cons 4 1) (cons 5 1))) (cons 4 1) "vector-assoc test")
+   (check-equal? (vector-assoc 4 (vector (cons 2 1) (cons 3 1) (cons 4 1) (cons 5 1))) (cons 4 1) "vector-assoc test")
+   (check-equal? (vector-assoc 1 (vector (cons 2 1) (cons 3 1) (cons 4 1) (cons 5 1))) #f "vector-assoc test")
    
    ; cached-assoc tests
    ;; (check-equal? ((cached-assoc (list (cons 1 2) (cons 3 4)) 3) 3) (cons 3 4) "cached-assoc test")
