@@ -4,3 +4,4 @@ sml.json
 foo.*
 test.*
 #*
+*.rkt~
