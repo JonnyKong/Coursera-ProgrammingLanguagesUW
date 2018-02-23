@@ -27,5 +27,3 @@
 
 (define foo (my-map (lambda (x) (+ x 1)) (cons 3 (cons 4 (cons 5 null)))))
 
-(define x (cons 15 (cons 20 null)))
-(set! x (cons 10 x))
