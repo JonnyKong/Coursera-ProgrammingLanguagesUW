@@ -45,3 +45,9 @@ This is the course project for MOOC Programming Languages, offered by University
     * __Delayed evaluation and thunks__ 
     * Streams use and definition
     * Memoization
+
+6. Section 6 (Racket):
+    * Datatype programming in Racket
+    * Implementing programming languages
+    * Intepreter assumptions
+    * Implementing variables and closures
