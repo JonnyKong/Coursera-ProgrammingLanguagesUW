@@ -74,7 +74,7 @@
 ;; Problem 10
 (define (cached-assoc xs n)
   (letrec ([pos 0]
-          [cache (vector n #f)])
+          [cache (make-vector n #f)])
     (lambda (v) 
       (letrec ([search_cache (vector-assoc v cache)])
         (if search_cache search_cache ; in cache
@@ -82,6 +82,6 @@
             (if search_list 
               (begin  ; not in cache but in list
                 (vector-set! cache pos search_list)
-                (set! pos (remainder (+ pos 1) n))
+                (if (= pos (- n 1)) (set! pos 0) (set! pos (+ pos 1)))
                 search_list)  
               #f)))))))  ; not in list
