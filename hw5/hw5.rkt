@@ -147,7 +147,7 @@
 
 ;; Challenge Problem
 
-(struct fun-challenge (nameopt formal body freevars) #:transparent) ;; a recursive(?) 1-argument function
+;; (struct fun-challenge (nameopt formal body freevars) #:transparent) ;; a recursive(?) 1-argument function
 
 ;; We will test this function directly, so it must do
 ;; as described in the assignment
