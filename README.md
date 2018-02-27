@@ -51,3 +51,8 @@ This is the course project for MOOC Programming Languages, offered by University
     * Implementing programming languages
     * Intepreter assumptions
     * Implementing variables and closures
+
+7. Section 7 (Racket):
+    * Static typing v.s. dynamic typing
+    * Weak typing
+    * The soundness and completeness of a type system, undecidability
