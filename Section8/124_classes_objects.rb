@@ -8,7 +8,7 @@ class A
 
   def m2 (x,y)
     z = 7
-    if x > y 
+    if x > y # Need syntax then if put on one line
       false
     else
       x + y * z
@@ -23,7 +23,7 @@ class B
   end
 
   def m3 x
-    x.abs * 2 + self.m1
+    x.abs * 2 + self.m1   #or "x.abs * 2 + m1"
   end
 end
 
