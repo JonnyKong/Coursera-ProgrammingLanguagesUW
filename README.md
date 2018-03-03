@@ -2,7 +2,7 @@
 This is the course project for MOOC Programming Languages, offered by University of Washington
 
 ## The content of this course includes:  
-1. Section 1 (Standard ML):
+1. _Section 1 (Standard ML):_
     * SML Functions
     * Pairs, tuples and lists
     * Let expressions
@@ -10,7 +10,7 @@ This is the course project for MOOC Programming Languages, offered by University
     * Options
     * Boolean and comparison operators
 
-2. Section 2 (Standard ML): 
+2. _Section 2 (Standard ML):_
     * Compound types: records and tuples
     * Concept of "Syntatic Sugar"
     * Datatype bindings and case expressions
@@ -20,7 +20,7 @@ This is the course project for MOOC Programming Languages, offered by University
     * Nested patterns
     * Tail recursions
 
-3. Section 3 (Standard ML):
+3. _Section 3 (Standard ML):_
     * Anonymous functions
     * Lexical scope and __closures__
     * __Currying__
@@ -28,7 +28,7 @@ This is the course project for MOOC Programming Languages, offered by University
     * Callbacks
     * Use closures in OOP (Java) and procedual languages (C)
 
-4. Section 4 (Standard ML):
+4. _Section 4 (Standard ML):_
     * __Type inferencing__
     * Mutual recursion
     * SML module systems
@@ -36,7 +36,7 @@ This is the course project for MOOC Programming Languages, offered by University
     * __Implementing ADTs with signatures and modules__
     * Equivalent functions
 
-5. Section 5 (Racket):
+5. _Section 5 (Racket):_
     * Racket definitions, functions and conditionals
     * Racket lists
     * __Dynamic typing__
@@ -46,18 +46,18 @@ This is the course project for MOOC Programming Languages, offered by University
     * Streams use and definition
     * Memoization
 
-6. Section 6 (Racket):
+6. _Section 6 (Racket):_
     * Datatype programming in Racket
     * Implementing programming languages
     * Intepreter assumptions
     * Implementing variables and closures
 
-7. Section 7 (Racket):
+7. _Section 7 (Racket):_
     * Static typing v.s. dynamic typing
     * Weak typing
     * The soundness and completeness of a type system, undecidability
 
-8. Section 8 (Ruby):
+8. _Section 8 (Ruby):_
     * Ruby syntax, semantics and scopes
     * Rules of Ruby OOP:
         * Everything is an object
