@@ -1,7 +1,7 @@
 # Coursera: Programming Languages, UW
 This is the course project for MOOC Programming Languages, offered by University of Washington
 
-## The content of this course contains:  
+## The content of this course includes:  
 1. Section 1 (Standard ML):
     * SML Functions
     * Pairs, tuples and lists
@@ -56,3 +56,16 @@ This is the course project for MOOC Programming Languages, offered by University
     * Static typing v.s. dynamic typing
     * Weak typing
     * The soundness and completeness of a type system, undecidability
+
+8. Section 8 (Ruby):
+    * Ruby syntax, semantics and scopes
+    * Rules of Ruby OOP :
+        * Everything is an object
+        * Object states, class variables, class constants, class methods
+        * Visibility
+        * Class definitions are dynamic
+        * Duck typing
+        * Subclassing and overriding
+        * __Dynamic Dispatch__
+    * Arrays, Hashes and Ranges
+    * Blocks and procs
