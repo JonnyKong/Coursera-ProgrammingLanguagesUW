@@ -22,24 +22,66 @@ class MyPiece < Piece
   # your enhancements here
   def self.next_piece (board)
     MyPiece.new(All_My_Pieces.sample, board)
-    puts "Calling new next_piece"
+  end
+
+  def self.next_cheat_piece (board)
+    MyPiece.new([[[0, 0]]], board)
   end
 
 end
 
 class MyBoard < Board
   # your enhancements here
+
+  # Initialize with MyPiece other than Piece
   def initialize(game)
     @grid = Array.new(num_rows) {Array.new(num_columns)}  # Create 2D Grid
     @current_block = MyPiece.next_piece(self)
     @score = 0
     @game = game
     @delay = 500
+    @cheat = false
+    # raise "Empty block created" unless !@current_block.nil?
   end
 
+  # Create with MyPiece other that Piece
   def next_piece
-    @current_block = MyPiece.next_piece(self)
+    if @cheat
+      @current_block = MyPiece.next_cheat_piece(self)
+      @cheat = false
+    else
+      @current_block = MyPiece.next_piece(self)
+    end
+    
     @current_pos = nil
+    # raise "Empty block created" unless !@current_block.nil?
+  end
+
+  # Blocks sizes can be other than 4
+  def store_current
+    # raise "Nil block created" unless !@current_block.nil?
+    locations = @current_block.current_rotation
+    displacement = @current_block.position
+    size = locations.size
+    (0..(size - 1)).each{|index|
+      current = locations[index];
+      @grid[current[1]+displacement[1]][current[0]+displacement[0]] = 
+      @current_pos[index]
+    }
+    remove_filled
+    @delay = [@delay - 2, 80].max
+  end
+
+  def start_cheat
+    if @score >= 100 && @cheat == false
+      @cheat = true
+      @score -= 100
+    end
+  end
+
+  def rotate_twice
+    rotate_clockwise
+    rotate_clockwise
   end
 
 end
@@ -47,10 +89,17 @@ end
 class MyTetris < Tetris
   # your enhancements here
   def set_board
-    super
+    @canvas = TetrisCanvas.new
     @board = MyBoard.new(self)
+    @canvas.place(@board.block_size * @board.num_rows + 3,
+                  @board.block_size * @board.num_columns + 6, 24, 80)
+    @board.draw
+  end
+
+  def key_bindings
+    super
+    @root.bind('u', proc {@board.rotate_twice})  # Rotate 180 degrees
+    @root.bind('c', proc {@board.start_cheat})  # Cheat on next block
   end
   
 end
-
-
