@@ -59,7 +59,7 @@ This is the course project for MOOC Programming Languages, offered by University
 
 8. Section 8 (Ruby):
     * Ruby syntax, semantics and scopes
-    * Rules of Ruby OOP :
+    * Rules of Ruby OOP:
         * Everything is an object
         * Object states, class variables, class constants, class methods
         * Visibility
