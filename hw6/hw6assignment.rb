@@ -5,8 +5,16 @@
 
 class MyPiece < Piece
   # The constant All_My_Pieces should be declared here
-  All_My_Pieces = All_My_Pieces +
-  [rotations([[-1, 0], [0, 0], [1, 0], [1, 1], [0, 1]]),  # 5-block blob piece
+  All_My_Pieces = 
+  [[[[0, 0], [1, 0], [0, 1], [1, 1]]],  # square (only needs one)
+  rotations([[0, 0], [-1, 0], [1, 0], [0, -1]]), # T
+  [[[0, 0], [-1, 0], [1, 0], [2, 0]], # long (only needs two)
+  [[0, 0], [0, -1], [0, 1], [0, 2]]],
+  rotations([[0, 0], [0, -1], [0, 1], [1, 1]]), # L
+  rotations([[0, 0], [0, -1], [0, 1], [-1, 1]]), # inverted L
+  rotations([[0, 0], [-1, 0], [0, -1], [1, -1]]), # S
+  rotations([[0, 0], [1, 0], [0, -1], [-1, -1]]), # Z
+  rotations([[-1, 0], [0, 0], [1, 0], [1, 1], [0, 1]]),  # 5-block blob piece
   [[[-2, 0], [-1, 0], [0, 0], [1, 0], [2, 0]],            # Long (only needs two)
   [[0, -2], [0, -1], [0, 0], [0, 1], [0, 2]]],
   rotations([[0, 0], [0, 1], [1, 0]])]                    # Small L
