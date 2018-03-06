@@ -199,12 +199,30 @@ fun eval_prog (e,env) =
 	| Intersect(e1,e2) => intersect(eval_prog(e1,env), eval_prog(e2, env))
 (* CHANGE: Add a case for Shift expressions *)
 	| Shift(deltaX,deltaY,e) => 
-	(case eval_prog(e) of
+	(case eval_prog(e, env) of
 		NoPoints => NoPoints
 		| Point(x, y) => Point(x + deltaX, y + deltaY)
 		| Line(m, b) => Line(m, b + deltaY - m * deltaX)
 		| VerticalLine(x) => VerticalLine(x + deltaX)
-		| LineSegment (x1, y1, x2, y2) 
-			=> LineSegment(x1+deltaX, y1+deltaY, x2+deltaX, y2+deltaY))
+		| LineSegment(x1, y1, x2, y2) 
+			=> LineSegment(x1+deltaX, y1+deltaY, x2+deltaX, y2+deltaY)
+		| _ => raise Impossible "bad results from eval_prog in shift")
 
 (* CHANGE: Add function preprocess_prog of type geom_exp -> geom_exp *)
+fun preprocess_prog e =
+	case e of
+	LineSegment(x1, y1, x2, y2) 
+		=> if real_close_point (x1, y1) (x2, y2)
+			then Point(x1, y1)
+			else if(real_close(x1, x2) andalso y1 > y2)
+			then LineSegment(x2, y2, x1, y1)
+			else if(x1 > x2)
+			then LineSegment(x2, y2, x1, y1)
+			else e
+	| Let(s, e1, e2) 
+		=> Let(s, preprocess_prog(e1), preprocess_prog(e2))
+	| Intersect(e1, e2)
+		=> Intersect(preprocess_prog(e1), preprocess_prog(e2))
+	| Shift(deltaX, deltaY, e)
+		=> Shift(deltaX, deltaY, preprocess_prog(e))
+	| _ => e
