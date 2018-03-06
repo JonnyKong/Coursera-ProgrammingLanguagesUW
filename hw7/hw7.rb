@@ -196,6 +196,7 @@ class Line < GeometryValue
   def intersectPoint p
     p.intersectLine(self) # 3rd dispatch
   end
+  
   def intersectLine line
     if real_close(m, line.m)
       if real_close(b, line.b)
