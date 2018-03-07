@@ -69,3 +69,12 @@ This is the course project for MOOC Programming Languages, offered by University
         * __Dynamic Dispatch__
     * Arrays, Hashes and Ranges
     * Blocks and procs
+
+9. _Section 9 (Ruby):_
+    * OOP v.s. functional decomposition
+    * Adding methods or variants
+    * __Double dispatch__
+    * Multiple inheritance
+    * Mixins
+    * Interfaces
+    * Abstract Methods
