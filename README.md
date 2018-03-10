@@ -78,3 +78,11 @@ This is the course project for MOOC Programming Languages, offered by University
     * Mixins
     * Interfaces
     * Abstract Methods
+
+10. _Section 10 (Ruby):_
+    * __Subtyping__
+    * Depth subtyping
+    * Function subtyping
+    * Suptyping and OOP
+    * Subtyping v.s. generics
+    * Bounded polymorphism
